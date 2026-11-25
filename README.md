@@ -51,7 +51,7 @@ profile rules run as well. Every rule is off unless the profile turns it on:
 ignore: ["build/**"]                  # paths that are not part of the bundle
 non_concepts: [README.md, STYLE.md]   # files without frontmatter on purpose
 types:
-  by_directory:                       # a directory name anywhere in the path
+  by_directory:                       # a directory name in the path; the closest one wins
     references: Reference
     examples: Example
   default: Concept                    # every other concept

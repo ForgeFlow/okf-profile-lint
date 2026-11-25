@@ -69,7 +69,7 @@ class Profile:
         return any(fnmatch.fnmatch(posix, pattern) for pattern in self.non_concepts)
 
     def expected_type(self, rel):
-        for part in rel.parts[:-1]:
+        for part in reversed(rel.parts[:-1]):
             if part in self.types_by_directory:
                 return self.types_by_directory[part]
         return self.default_type

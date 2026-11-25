@@ -91,3 +91,19 @@ def test_ignored_paths_are_skipped(bundle, capsys):
     code, found = findings(bundle, capsys)
     assert code == 0
     assert not any(path.startswith("build/") for path, _ in found)
+
+
+def test_closest_directory_decides_the_type(bundle, capsys):
+    profile = bundle / "okf-profile.yaml"
+    profile.write_text(profile.read_text().replace(
+        "    references: Reference\n", "    references: Reference\n    notes: Note\n"))
+    notes = bundle / "references" / "notes"
+    notes.mkdir()
+    (notes / "index.md").write_text("# Notes\n\n* [A note](/references/notes/a-note.md) - A note on a reference.\n")
+    (notes / "a-note.md").write_text(
+        "---\ntype: Note\ntitle: A note\ndescription: A note on a reference.\nstatus: draft\n---\n\n# A note\n")
+    references_index = bundle / "references" / "index.md"
+    references_index.write_text(references_index.read_text() + "* [Notes](/references/notes/index.md) - Notes on references.\n")
+    code, found = findings(bundle, capsys)
+    assert ("references/notes/a-note.md", "P003") not in found
+    assert code == 0
