@@ -1,0 +1,15 @@
+non_concepts: [README.md]
+types:
+  by_directory:
+    references: Reference
+  default: Concept
+fields:
+  required: [title, description, status]
+  forbidden: [generated]
+  values:
+    status: [draft, stable, deprecated]
+rules:
+  ascii_only: true
+  title_heading: true
+  listed_in_index: true
+  broken_links: true

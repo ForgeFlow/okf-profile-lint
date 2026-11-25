@@ -1,0 +1,8 @@
+okf-profile-lint
+Copyright 2026 ForgeFlow, S.L.
+
+This product includes software developed as part of the Open Knowledge Format
+project (https://github.com/open-knowledge-format/open-knowledge-format):
+src/okf_profile_lint/vendor/okf_validate.py is an unmodified copy of
+skills/okf-generate/scripts/validate.py at commit c4df7bab129884a19673c7098dd8a5c55bf06c86,
+Copyright 2026 Google LLC, licensed under the Apache License, Version 2.0.

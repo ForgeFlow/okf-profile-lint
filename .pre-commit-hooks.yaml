@@ -1,0 +1,7 @@
+- id: okf-profile-lint
+  name: Lint OKF bundle
+  description: Check OKF conformance and the bundle's okf-profile.yaml rules.
+  entry: okf-profile-lint
+  language: python
+  pass_filenames: false
+  always_run: true
